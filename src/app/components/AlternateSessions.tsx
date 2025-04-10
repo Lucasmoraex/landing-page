@@ -8,7 +8,7 @@ const recursos = [
     titulo: "Rigorosamente testado",
     descricao:
       "Desenvolvida com materiais de altíssima qualidade, a Cadeira Ergonômica Una foi submetida a rigorosos testes antes de chegar até você. Certificada pela BIFMA e SGS, oferece tranquilidade e durabilidade garantida.",
-    imagem: "/section-1.jpg",
+    imagem: "/section-1.png",
   },
   {
     titulo: "Suporte lombar ajustável",
