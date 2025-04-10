@@ -8,7 +8,7 @@ export default function CallToAction() {
           Conforto profissional na sua casa. Frete grátis para todo o Brasil!
         </p>
         <a
-          href="https://loja.elements.com.br/products/cadeira-ergonomica-elements-siggy"
+          href="https://loja.elements.com.br/products/cadeira-ergonomica-elements-una"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block bg-white text-gray-900 font-semibold px-8 py-4 rounded-full shadow-lg hover:bg-gray-200 transition"
