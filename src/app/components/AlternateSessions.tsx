@@ -27,7 +27,7 @@ const recursos = [
 export default function AlternateSessions() {
   return (
     <section className="px-6 py-24 bg-white">
-      <div className="space-y-32">
+      <div className="max-w-screen-xl mx-auto space-y-32">
         {recursos.map((item, index) => {
           const isReverse = index % 2 !== 0;
           const bgColor = index % 2 === 0 ? 'bg-white' : 'bg-gray-50';
@@ -55,7 +55,7 @@ export default function AlternateSessions() {
               </div>
 
               {/* Texto */}
-              <div className={`flex-1 text-left ${isReverse ? 'md:text-right' : ''}`}>
+              <div className={`flex-1 text-left ${isReverse ? 'md:text-start' : ''}`}>
                 <h3 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-4">
                   {item.titulo}
                 </h3>

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 const images = [
-  { src: "/slide-1.png", alt: "Slide 1" },
+  { src: "/unatecido.webp", alt: "Slide 1" },
   { src: "/slide-2.png", alt: "Slide 2" },
   { src: "/slide-3.png", alt: "Slide 3" },
 ];
@@ -23,10 +23,11 @@ export default function ImageSlide() {
   return (
     <section className="px-6 py-20 bg-gray-100 text-center">
       <h2 className="text-3xl md:text-4xl font-semibold mb-12">
-        Veja a Siggy em detalhes
+        Veja a Una em detalhes
       </h2>
 
-      <div className="relative flex items-center justify-center">
+      {/* === DESKTOP: várias imagens lado a lado === */}
+      <div className="hidden md:flex relative items-center justify-center">
         {/* Botão Esquerda */}
         <button
           onClick={prev}
@@ -35,7 +36,7 @@ export default function ImageSlide() {
           ◀
         </button>
 
-        {/* Galeria */}
+        {/* Galeria de miniaturas */}
         <div className="flex gap-4 transition-all duration-500">
           {images.map((img, i) => {
             const isActive = i === current;
@@ -52,7 +53,7 @@ export default function ImageSlide() {
                   alt={img.alt}
                   width={300}
                   height={300}
-                  className="object-contain w-[300px] h-[300px]"
+                  className="object-contain w-full max-w-[300px] h-[300px]"
                 />
               </div>
             );
@@ -66,6 +67,35 @@ export default function ImageSlide() {
         >
           ▶
         </button>
+      </div>
+
+      {/* === MOBILE: uma imagem por vez === */}
+      <div className="md:hidden">
+        <div className="rounded-xl overflow-hidden shadow-xl">
+          <Image
+            src={images[current].src}
+            alt={images[current].alt}
+            width={300}
+            height={300}
+            className="object-contain w-full max-w-[300px] h-[300px] mx-auto"
+          />
+        </div>
+
+        {/* Botões mobile abaixo */}
+        <div className="flex justify-center gap-4 mt-6">
+          <button
+            onClick={prev}
+            className="bg-white text-gray-800 shadow-md rounded-full px-4 py-2 hover:bg-gray-200 transition"
+          >
+            ◀
+          </button>
+          <button
+            onClick={next}
+            className="bg-white text-gray-800 shadow-md rounded-full px-4 py-2 hover:bg-gray-200 transition"
+          >
+            ▶
+          </button>
+        </div>
       </div>
     </section>
   );

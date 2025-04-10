@@ -3,12 +3,10 @@
 import { useState } from "react";
 
 const specs = {
-  "Cores": (
-    <p><strong>Cores Disponíveis:</strong> Cinza, Preto, Verde e Vermelho</p>
-  ),
+  
   "Peso e Altura": (
     <>
-      <p><strong>Peso Máximo Suportado:</strong> 130 kg</p>
+      <p><strong>Peso Máximo Suportado:</strong> 140 kg</p>
       <p><strong>Altura Máxima Recomendada:</strong> Até 1,85 m</p>
     </>
   ),
@@ -16,22 +14,21 @@ const specs = {
     <>
       <p><strong>Dimensões do Produto:</strong></p>
       <ul className="list-disc list-inside ml-4">
-        <li>Altura total: 115 cm a 125 cm (ajustável)</li>
-        <li>Largura do assento: 50 cm</li>
-        <li>Profundidade do assento: 48 cm</li>
-        <li>Altura do assento ao chão: 45 cm a 55 cm (ajustável)</li>
+        <li>Largura do assento: 50,5 cm</li>
+        <li>Profundidade do assento: 51 cm</li>
+        <li>Altura do assento ao chão: 43 cm a 51 cm (ajustável)</li>
       </ul>
     </>
   ),
-  "Recursos": (
+  "Ajustes": (
     <>
       <p><strong>Recursos e Ajustes:</strong></p>
       <ul className="list-disc list-inside ml-4">
-        <li>Encosto reclinável com trava multiponto</li>
-        <li>Apoio de cabeça ajustável</li>
         <li>Apoio lombar ajustável</li>
         <li>Apoios de braço 3D (altura, profundidade e ângulo ajustáveis)</li>
-        <li>Altura do assento ajustável com pistão a gás</li>
+        <li>Possuí ajuste de lombar por pistão a gás</li>
+        <li>Ajuste de tensão de mola</li>
+        <li>Encosto reclinável (trava em 3 posições, 4 níveis de altura)</li>
       </ul>
     </>
   ),
@@ -39,18 +36,15 @@ const specs = {
     <>
       <p><strong>Materiais:</strong></p>
       <ul className="list-disc list-inside ml-4">
-        <li>Estrutura: Alumínio e plástico de alta resistência</li>
+        <li>Assento: Mesh Velvet</li>
         <li>Revestimento: Tecido mesh respirável</li>
         <li>Base: Alumínio com rodízios de nylon</li>
       </ul>
     </>
   ),
   "Garantia": (
-    <p><strong>Garantia:</strong> 12 meses (3 meses de garantia legal + 9 meses de garantia contratual)</p>
+    <p><strong>Garantia:</strong> 12 meses </p>
   ),
-  "Parcelamento": (
-    <p><strong>Parcelamento:</strong> Em até 10x sem juros de R$ 244,34</p>
-  )
 } as const;
 
 // tipa as chaves do objeto como um tipo

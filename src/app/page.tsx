@@ -6,7 +6,7 @@ import AlternateSessions from "./components/AlternateSessions";
 import Hero from "./components/Hero";
 import CallToAction from "./components/CallToAction";
 import FixedButton from "./components/FixedButton";
-
+import BannerSection from "./components/BannerSection"
 
 export default function Home() {
   return (
@@ -14,17 +14,33 @@ export default function Home() {
       <Hero />
 
       <section className="flex flex-col items-center justify-center text-center px-6 py-20 bg-gray-100">
-        <h1 className="text-4xl md:text-5xl font-bold mb-6">
-          Cadeira Ergonômica Elements Una
-        </h1>
-        <Image
-          src="/una.png"
-          alt="Cadeira Elements Una"
-          width={1500}
-          height={1500}
-          className="rounded-xl shadow-lg"
-        />
-      </section>
+  <h1 className="text-4xl md:text-5xl font-bold mb-6">
+    Cadeira Ergonômica Elements Una
+  </h1>
+
+  {/* Imagem mobile */}
+  <div className="block md:hidden">
+    <Image
+      src="/UnaSectionMobile.jpg" // essa é a versão mobile que você precisa criar ou adaptar
+      alt="Cadeira Elements Una - Mobile"
+      width={500}
+      height={500}
+      className="rounded-xl shadow-lg"
+    />
+  </div>
+
+  {/* Imagem desktop */}
+  <div className="hidden md:block">
+    <Image
+      src="/una.png"
+      alt="Cadeira Elements Una"
+      width={1500}
+      height={1500}
+      className="rounded-xl shadow-lg"
+    />
+  </div>
+</section>
+
 
       {/* Benefícios / Destaques */}
       <section className="px-6 py-16 bg-white text-center">
@@ -56,9 +72,11 @@ export default function Home() {
 
       <ImageSlide />
 
-      <Especificacoes />
+      <BannerSection />
 
       <AlternateSessions />
+
+      <Especificacoes />
 
       <CallToAction />
 
