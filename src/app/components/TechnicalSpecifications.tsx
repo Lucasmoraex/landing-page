@@ -51,7 +51,7 @@ const specs = {
 type SpecKey = keyof typeof specs;
 
 export default function TechnicalSpecifications() {
-  const [active, setActive] = useState<SpecKey>("Cores");
+  const [active, setActive] = useState<SpecKey>("Peso e Altura");
 
   return (
     <section className="px-6 py-16 bg-white">
