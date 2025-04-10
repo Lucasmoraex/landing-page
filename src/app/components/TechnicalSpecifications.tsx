@@ -51,10 +51,13 @@ const specs = {
   "Parcelamento": (
     <p><strong>Parcelamento:</strong> Em até 10x sem juros de R$ 244,34</p>
   )
-};
+} as const;
+
+// tipa as chaves do objeto como um tipo
+type SpecKey = keyof typeof specs;
 
 export default function TechnicalSpecifications() {
-  const [active, setActive] = useState("Cores");
+  const [active, setActive] = useState<SpecKey>("Cores");
 
   return (
     <section className="px-6 py-16 bg-white">
@@ -62,7 +65,7 @@ export default function TechnicalSpecifications() {
 
       {/* Abas horizontais */}
       <div className="flex flex-wrap justify-center gap-4 mb-8">
-        {Object.keys(specs).map((key) => (
+        {(Object.keys(specs) as SpecKey[]).map((key) => (
           <button
             key={key}
             onClick={() => setActive(key)}
