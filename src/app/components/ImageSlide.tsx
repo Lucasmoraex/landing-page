@@ -1,12 +1,24 @@
-'use client';
+"use client";
 
 import Image from "next/image";
 import { useState } from "react";
 
 const images = [
-  { src: "/unatecido.webp", alt: "Slide 1" },
-  { src: "/slide-2.png", alt: "Slide 2" },
-  { src: "/slide-3.png", alt: "Slide 3" },
+  {
+    src: "/unatecido.webp",
+    alt: "Slide 1",
+    text: "Tecido premium e respirável com toque macio.",
+  },
+  {
+    src: "/slide-2.png",
+    alt: "Slide 2",
+    text: "Ajustes precisos para o encosto e braços.",
+  },
+  {
+    src: "/slide-3.png",
+    alt: "Slide 3",
+    text: "Design moderno que se adapta a qualquer ambiente.",
+  },
 ];
 
 export default function ImageSlide() {
@@ -22,11 +34,15 @@ export default function ImageSlide() {
 
   return (
     <section className="px-6 py-20 bg-gray-100 text-center">
-      <h2 className="text-3xl md:text-4xl font-semibold mb-12">
+      <h2 className="text-3xl md:text-4xl font-semibold mb-4">
         Veja a Una em detalhes
       </h2>
 
-      {/* === DESKTOP: várias imagens lado a lado === */}
+      <p className="text-gray-600 max-w-xl mx-auto mb-12 transition-all duration-500">
+        {images[current].text}
+      </p>
+
+      {/* === DESKTOP: centralização da imagem ativa === */}
       <div className="hidden md:flex relative items-center justify-center">
         {/* Botão Esquerda */}
         <button
@@ -36,29 +52,38 @@ export default function ImageSlide() {
           ◀
         </button>
 
-        {/* Galeria de miniaturas */}
-        <div className="flex gap-4 transition-all duration-500">
-          {images.map((img, i) => {
-            const isActive = i === current;
-            return (
-              <div
-                key={i}
-                onClick={() => setCurrent(i)}
-                className={`cursor-pointer rounded-xl overflow-hidden shadow-xl transition-all duration-500 ${
-                  isActive ? 'scale-100 opacity-100' : 'scale-90 opacity-50'
-                }`}
-              >
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  width={300}
-                  height={300}
-                  className="object-contain w-full max-w-[300px] h-[300px]"
-                />
-              </div>
-            );
-          })}
-        </div>
+        {/* Galeria com slide centralizado */}
+                  <div className="overflow-hidden w-[900px]">
+            <div
+              className="flex gap-4 transition-transform duration-500"
+              style={{
+                transform: `translateX(calc(-${current * 316}px + 300px))`,
+              }}
+            >
+              {images.map((img, i) => {
+                const isActive = i === current;
+                return (
+                  <div
+                    key={i}
+                    onClick={() => setCurrent(i)}
+                    className={`cursor-pointer rounded-xl overflow-hidden shadow-xl transition-all duration-500 ${
+                      isActive ? "scale-100 opacity-100" : "scale-90 opacity-50"
+                    }`}
+                    style={{ minWidth: "300px" }}
+                  >
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      width={300}
+                      height={300}
+                      className="object-contain w-full h-[300px]"
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
 
         {/* Botão Direita */}
         <button

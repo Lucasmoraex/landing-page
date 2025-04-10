@@ -50,7 +50,7 @@ export default function Hero() {
         className="hidden md:block relative w-full h-full"
       >
         <Image
-          src="/big-slide.png"
+          src="/bannerHeroDesk.jpg"
           alt="Detalhe da cadeira Una"
           fill
           className="object-cover object-center"
@@ -67,7 +67,7 @@ export default function Hero() {
         className="block md:hidden relative w-full h-[50vh]"
       >
         <Image
-          src="/unaHeroMobile.jpg"
+          src="/bannerHeroMob.jpg"
           alt="Cadeira Una - Mobile"
           fill
           className="object-cover object-center"

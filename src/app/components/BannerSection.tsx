@@ -11,7 +11,7 @@ export default function BannerSection() {
   const bannerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
-  const [scaleAmount, setScaleAmount] = useState(2); // default for desktop
+  const [scaleAmount, setScaleAmount] = useState(0.85);
 
   useEffect(() => {
     const updateDevice = () => {
@@ -19,12 +19,9 @@ export default function BannerSection() {
       setIsMobile(isMobileNow);
 
       if (isMobileNow) {
-        const imageStartWidth = window.innerWidth * 0.9; // 90vw
-        const targetWidth = window.innerWidth;
-        const idealScale = targetWidth / imageStartWidth;
-        setScaleAmount(idealScale); // escala sob medida pra mobile
+        setScaleAmount(0.9);
       } else {
-        setScaleAmount(2.0); // desktop
+        setScaleAmount(0.85);
       }
     };
 
@@ -46,7 +43,7 @@ export default function BannerSection() {
           scrollTrigger: {
             trigger: bannerRef.current,
             start: "top top",
-            end: "+=1000",
+            end: () => `${window.innerHeight * 0.8}`,
             scrub: true,
             pin: true,
             anticipatePin: 1,
@@ -55,26 +52,36 @@ export default function BannerSection() {
       );
     }, bannerRef);
 
-    return () => ctx.revert();
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      ctx.revert();
+    };
   }, [scaleAmount]);
 
-  const imageSrc = isMobile ? "/unamobile-banner.png" : "/UnaHeroDesktop.jpg.jpg"; // 🔁 aqui
+  const imageSrc = isMobile
+    ? "/unamobile-banner.png"
+    : "/UnaHeroDesktop.jpg.jpg";
 
   return (
     <section
       ref={bannerRef}
-      className="relative w-full h-screen overflow-hidden bg-white flex items-center justify-center"
+      className={`relative w-full overflow-hidden bg-white ${
+        isMobile ? "h-auto py-4" : "h-screen"
+      }`}
     >
       <div
         ref={imageRef}
-        className="w-[90vw] md:w-[50vw] h-auto transition-transform duration-300"
+        className="w-full transition-transform duration-300"
+        style={{ height: isMobile ? "auto" : "100%" }}
       >
         <Image
           src={imageSrc}
           alt="Banner"
           width={1400}
           height={1400}
-          className="w-full h-auto object-contain rounded-2xl shadow-xl"
+          className={`w-full rounded-2xl shadow-xl ${
+            isMobile ? "h-auto object-contain" : "h-full object-cover"
+          }`}
           priority
         />
       </div>
