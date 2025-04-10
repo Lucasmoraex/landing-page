@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 export default function CallToAction() {
   return (
     <section className="px-6 py-20 bg-gray-900 text-white text-center">
