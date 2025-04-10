@@ -67,8 +67,8 @@ export default function Hero() {
         className="block md:hidden relative w-full h-[50vh]"
       >
         <Image
-          src="/UnaHeroMobile.jpg.jpg"
-          alt="Cadeira Siggy - Mobile"
+          src="/UnaHeroMobile.jpg"
+          alt="Cadeira Una - Mobile"
           fill
           className="object-cover object-center"
           priority
