@@ -10,6 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function BannerSection() {
   const bannerRef = useRef<HTMLDivElement>(null);
   const [imageIndex, setImageIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState<boolean | null>(null); // ← null inicialmente
 
   const desktopImages = [
     "/UnaHeroDesktop.jpg.jpg",
@@ -18,14 +19,22 @@ export default function BannerSection() {
 
   const mobileImages = [
     "/bannerMob.jpg",
-    "/bannerHeroMob.jpg", // Corrigido: estava ,jpg
+    "/bannerHeroMob.jpg",
   ];
 
-  const isMobile =
-    typeof window !== "undefined" && window.innerWidth < 768;
+  useEffect(() => {
+    const checkDevice = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkDevice(); // Detecta ao carregar
+    window.addEventListener("resize", checkDevice);
+
+    return () => window.removeEventListener("resize", checkDevice);
+  }, []);
 
   useEffect(() => {
-    if (!bannerRef.current) return;
+    if (!bannerRef.current || isMobile === null) return;
 
     const trigger = ScrollTrigger.create({
       trigger: bannerRef.current,
@@ -41,7 +50,9 @@ export default function BannerSection() {
     return () => {
       trigger.kill();
     };
-  }, []);
+  }, [isMobile]);
+
+  if (isMobile === null) return null; // Evita carregar até saber se é mobile ou não
 
   const currentImage = isMobile
     ? mobileImages[imageIndex]
@@ -64,7 +75,7 @@ export default function BannerSection() {
           height={800}
           className={`w-full rounded-2xl shadow-xl ${
             isMobile
-              ? "aspect-[5/6] object-cover"
+              ? "h-[360px] object-cover"
               : "h-full object-cover"
           }`}
           priority
