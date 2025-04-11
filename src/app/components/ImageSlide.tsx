@@ -12,12 +12,12 @@ const images = [
   {
     src: "/slide-2.png",
     alt: "Slide 2",
-    text: "Ajustes precisos para o encosto e braços.",
+    text: "Ajustes precisos para o encosto e assento.",
   },
   {
     src: "/slide-3.png",
     alt: "Slide 3",
-    text: "Design moderno que se adapta a qualquer ambiente.",
+    text: "Ajustes precisos para os braços.",
   },
 ];
 
@@ -38,9 +38,10 @@ export default function ImageSlide() {
         Veja a Una em detalhes
       </h2>
 
-      <p className="text-gray-600 max-w-xl mx-auto mb-12 transition-all duration-500">
+      <p className="text-gray-600 font-semibold max-w-xl mx-auto mb-12 transition-all duration-500">
         {images[current].text}
       </p>
+
 
       {/* === DESKTOP: centralização da imagem ativa === */}
       <div className="hidden md:flex relative items-center justify-center">
@@ -108,19 +109,20 @@ export default function ImageSlide() {
 
         {/* Botões mobile abaixo */}
         <div className="flex justify-center gap-4 mt-6">
-          <button
-            onClick={prev}
-            className="bg-white text-gray-800 shadow-md rounded-full px-4 py-2 hover:bg-gray-200 transition"
-          >
-            ◀
-          </button>
-          <button
-            onClick={next}
-            className="bg-white text-gray-800 shadow-md rounded-full px-4 py-2 hover:bg-gray-200 transition"
-          >
-            ▶
-          </button>
-        </div>
+         <button
+          onClick={prev}
+          className="bg-black text-white shadow-md rounded-full px-4 py-2 hover:bg-gray-800 transition border-none focus:outline-none focus:ring-0"
+        >
+          ◀
+         </button>
+         <button
+          onClick={next}
+          className="bg-black text-white shadow-md rounded-full px-4 py-2 hover:bg-gray-800 transition border-none focus:outline-none focus:ring-0"
+        >
+          ▶
+        </button>
+      </div>
+
       </div>
     </section>
   );

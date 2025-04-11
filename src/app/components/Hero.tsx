@@ -34,12 +34,6 @@ export default function Hero() {
 
   return (
     <section className="relative h-auto md:h-[90vh] w-full overflow-hidden bg-white">
-      {/* Texto centralizado sobre a imagem */}
-      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-6">
-        <h2 className="text-4xl md:text-7xl font-extrabold bg-gradient-to-b from-gray-300 to-gray-100 text-transparent bg-clip-text drop-shadow mb-6">
-          Bem-vindo ao Futuro
-        </h2>
-      </div>
 
       {/* Imagem desktop */}
       <motion.div
