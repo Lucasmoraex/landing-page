@@ -13,7 +13,7 @@ export default function Home() {
     <main className="min-h-screen bg-white text-gray-800">
 
       {/* Introdução com título futurista */}
-      <section className="flex items-center justify-center py-12 text-center bg-gray-100">
+      <section className="flex items-center justify-center py-6 md:py-12 text-center bg-gray-100">
         <h1 className="text-4xl md:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-gray-400 to-white/20 tracking-tight leading-tight">
           Bem-vindo ao{" "}
           <span className="bg-clip-text text-transparent bg-gradient-to-b from-gray-400 to-white/40">
@@ -24,11 +24,11 @@ export default function Home() {
 
       {/* Vídeo principal */}
       <VideoSection />
-
+    
       {/* Imagem principal da cadeira */}
       <section className="flex flex-col items-center justify-center text-center px-6 py-20 bg-gray-100">
         <h1 className="text-4xl md:text-5xl font-bold mb-6">
-          Cadeira Ergonômica Elements Una
+          Cadeira Elements UNA
         </h1>
 
         {/* Imagem mobile */}
@@ -57,7 +57,7 @@ export default function Home() {
       {/* Benefícios / Destaques */}
       <section className="px-6 py-16 bg-white text-center">
         <h2 className="text-3xl md:text-4xl font-semibold mb-10">
-          Por que escolher a Una?
+          Por que escolher a UNA?
         </h2>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">

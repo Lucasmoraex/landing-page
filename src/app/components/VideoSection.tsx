@@ -16,7 +16,8 @@ export default function VideoSection() {
   }, []);
 
   return (
-    <section className="relative w-full overflow-hidden bg-gray-100 py-12 px-4 flex items-center justify-center">
+    <section className="relative w-full overflow-hidden bg-gray-100 py-8 px-4 flex items-center justify-center">
+
       <div
         className={`w-full ${
           isMobile ? "max-w-md" : "max-w-6xl"

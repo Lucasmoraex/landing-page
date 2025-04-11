@@ -9,78 +9,63 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function BannerSection() {
   const bannerRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLDivElement>(null);
-  const [isMobile, setIsMobile] = useState(false);
-  const [scaleAmount, setScaleAmount] = useState(0.85);
+  const [imageIndex, setImageIndex] = useState(0);
+
+  const desktopImages = [
+    "/UnaHeroDesktop.jpg.jpg",
+    "/big-slide.png",
+  ];
+
+  const mobileImages = [
+    "/bannerMob.jpg",
+    "/bannerHeroMob.jpg", // Corrigido: estava ,jpg
+  ];
+
+  const isMobile =
+    typeof window !== "undefined" && window.innerWidth < 768;
 
   useEffect(() => {
-    const updateDevice = () => {
-      const isMobileNow = window.innerWidth < 768;
-      setIsMobile(isMobileNow);
+    if (!bannerRef.current) return;
 
-      if (isMobileNow) {
-        setScaleAmount(0.9);
-      } else {
-        setScaleAmount(0.85);
-      }
-    };
-
-    updateDevice();
-    window.addEventListener("resize", updateDevice);
-    return () => window.removeEventListener("resize", updateDevice);
-  }, []);
-
-  useEffect(() => {
-    if (!bannerRef.current || !imageRef.current) return;
-
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        imageRef.current,
-        { scale: 1 },
-        {
-          scale: scaleAmount,
-          ease: "none",
-          scrollTrigger: {
-            trigger: bannerRef.current,
-            start: "top top",
-            end: () => `${window.innerHeight * 0.8}`,
-            scrub: true,
-            pin: true,
-            anticipatePin: 1,
-          },
-        }
-      );
-    }, bannerRef);
+    const trigger = ScrollTrigger.create({
+      trigger: bannerRef.current,
+      start: "bottom 70%",
+      end: "+=60%",
+      pin: true,
+      scrub: 0.5,
+      pinSpacing: true,
+      onEnter: () => setImageIndex(1),
+      onLeaveBack: () => setImageIndex(0),
+    });
 
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-      ctx.revert();
+      trigger.kill();
     };
-  }, [scaleAmount]);
+  }, []);
 
-  const imageSrc = isMobile
-    ? "/unamobile-banner.png"
-    : "/UnaHeroDesktop.jpg.jpg";
+  const currentImage = isMobile
+    ? mobileImages[imageIndex]
+    : desktopImages[imageIndex];
 
   return (
     <section
       ref={bannerRef}
-      className={`relative w-full overflow-hidden bg-white ${
-        isMobile ? "h-auto py-4" : "h-screen"
-      }`}
+      className="relative w-full overflow-hidden bg-white"
     >
       <div
-        ref={imageRef}
-        className="w-full transition-transform duration-300"
-        style={{ height: isMobile ? "auto" : "100%" }}
+        className={`w-full ${
+          isMobile ? "" : "max-w-[1400px] px-6 mx-auto"
+        }`}
       >
         <Image
-          src={imageSrc}
+          src={currentImage}
           alt="Banner"
           width={1400}
-          height={1400}
+          height={800}
           className={`w-full rounded-2xl shadow-xl ${
-            isMobile ? "h-auto object-contain" : "h-full object-cover"
+            isMobile
+              ? "aspect-[5/6] object-cover"
+              : "h-full object-cover"
           }`}
           priority
         />
