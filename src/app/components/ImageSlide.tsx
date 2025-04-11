@@ -42,7 +42,6 @@ export default function ImageSlide() {
         {images[current].text}
       </p>
 
-
       {/* === DESKTOP: centralização da imagem ativa === */}
       <div className="hidden md:flex relative items-center justify-center">
         {/* Botão Esquerda */}
@@ -54,37 +53,36 @@ export default function ImageSlide() {
         </button>
 
         {/* Galeria com slide centralizado */}
-                  <div className="overflow-hidden w-[900px]">
-            <div
-              className="flex gap-4 transition-transform duration-500"
-              style={{
-                transform: `translateX(calc(-${current * 316}px + 300px))`,
-              }}
-            >
-              {images.map((img, i) => {
-                const isActive = i === current;
-                return (
-                  <div
-                    key={i}
-                    onClick={() => setCurrent(i)}
-                    className={`cursor-pointer rounded-xl overflow-hidden shadow-xl transition-all duration-500 ${
-                      isActive ? "scale-100 opacity-100" : "scale-90 opacity-50"
-                    }`}
-                    style={{ minWidth: "300px" }}
-                  >
-                    <Image
-                      src={img.src}
-                      alt={img.alt}
-                      width={300}
-                      height={300}
-                      className="object-contain w-full h-[300px]"
-                    />
-                  </div>
-                );
-              })}
-            </div>
+        <div className="overflow-hidden w-[900px]">
+          <div
+            className="flex gap-4 transition-transform duration-500"
+            style={{
+              transform: `translateX(calc(-${current * 316}px + 300px))`,
+            }}
+          >
+            {images.map((img, i) => {
+              const isActive = i === current;
+              return (
+                <div
+                  key={i}
+                  onClick={() => setCurrent(i)}
+                  className={`cursor-pointer rounded-xl overflow-hidden shadow-xl transition-all duration-500 ${
+                    isActive ? "scale-100 opacity-100" : "scale-90 opacity-50"
+                  }`}
+                  style={{ minWidth: "300px" }}
+                >
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    width={300}
+                    height={300}
+                    className="object-contain w-full h-[300px] rounded-xl"
+                  />
+                </div>
+              );
+            })}
           </div>
-
+        </div>
 
         {/* Botão Direita */}
         <button
@@ -103,26 +101,25 @@ export default function ImageSlide() {
             alt={images[current].alt}
             width={300}
             height={300}
-            className="object-contain w-full max-w-[300px] h-[300px] mx-auto"
+            className="object-contain w-full max-w-[300px] h-[300px] mx-auto rounded-xl"
           />
         </div>
 
         {/* Botões mobile abaixo */}
         <div className="flex justify-center gap-4 mt-6">
-         <button
-          onClick={prev}
-          className="bg-black text-white shadow-md rounded-full px-4 py-2 hover:bg-gray-800 transition border-none focus:outline-none focus:ring-0"
-        >
-          ◀
-         </button>
-         <button
-          onClick={next}
-          className="bg-black text-white shadow-md rounded-full px-4 py-2 hover:bg-gray-800 transition border-none focus:outline-none focus:ring-0"
-        >
-          ▶
-        </button>
-      </div>
-
+          <button
+            onClick={prev}
+            className="bg-black text-white shadow-md rounded-full px-4 py-2 hover:bg-gray-800 transition border-none focus:outline-none focus:ring-0"
+          >
+            ◀
+          </button>
+          <button
+            onClick={next}
+            className="bg-black text-white shadow-md rounded-full px-4 py-2 hover:bg-gray-800 transition border-none focus:outline-none focus:ring-0"
+          >
+            ▶
+          </button>
+        </div>
       </div>
     </section>
   );
