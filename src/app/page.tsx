@@ -3,7 +3,6 @@ import Image from "next/image";
 import Especificacoes from "./components/TechnicalSpecifications";
 import ImageSlide from "./components/ImageSlide";
 import AlternateSessions from "./components/AlternateSessions";
-import Hero from "./components/Hero";
 import CallToAction from "./components/CallToAction";
 import FixedButton from "./components/FixedButton";
 import BannerSection from "./components/BannerSection";
