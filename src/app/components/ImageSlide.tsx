@@ -108,20 +108,27 @@ export default function ImageSlide() {
         </div>
 
         {/* Botões mobile abaixo */}
-        <div className="flex justify-center gap-4 mt-6">
-          <button
-            onClick={prev}
-            className="text-white shadow-md rounded-full px-4 py-2 hover:bg-gray-800 transition border-none focus:outline-none focus:ring-0"
-          >
-            ◀
-          </button>
-          <button
-            onClick={next}
-            className="text-white shadow-md rounded-full px-4 py-2 hover:bg-gray-800 transition border-none focus:outline-none focus:ring-0"
-          >
-            ▶
-          </button>
-        </div>
+                  <div className="flex justify-center gap-4 mt-6">
+            <button onClick={prev}>
+              <Image
+                src="/arrowleft.png"
+                alt="Anterior"
+                width={32}
+                height={32}
+                className="hover:opacity-80 transition"
+              />
+            </button>
+            <button onClick={next}>
+              <Image
+                src="/arrowright.png"
+                alt="Próximo"
+                width={32}
+                height={32}
+                className="hover:opacity-80 transition"
+              />
+            </button>
+          </div>
+
       </div>
     </section>
   );
